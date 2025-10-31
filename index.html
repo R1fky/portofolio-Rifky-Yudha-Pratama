@@ -1,13 +1,442 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio - Rifky Yudha Pratama</title>
+    <title>Rifky Yudha Pratama - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-fadeInUp {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      .animate-slideInLeft {
+        animation: slideInLeft 0.8s ease-out forwards;
+      }
+
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+
+      .skill-card {
+        transition: all 0.3s ease;
+        opacity: 0;
+      }
+
+      .skill-card.show {
+        opacity: 1;
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-card {
+        transition: all 0.4s ease;
+        opacity: 0;
+      }
+
+      .project-card.show {
+        opacity: 1;
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-tag {
+        transition: all 0.2s ease;
+      }
+
+      .project-tag:hover {
+        transform: scale(1.05);
+      }
+
+      .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #3b82f6;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
-  <body>
-    <div class="container">
-      <h1>Aku adalah sang prabu</h1>
-    </div>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="text-2xl font-bold gradient-text">RYP</div>
+          <div class="hidden md:flex space-x-8">
+            <a href="#home" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
+            <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
+            <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600">Skills</a>
+            <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600">Projects</a>
+            <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600">Experience</a>
+            <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 min-h-screen flex items-center">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 animate-fadeInUp">Hi, I'm <span class="gradient-text">Rifky Yudha Pratama</span></h1>
+            <p class="text-xl text-gray-600 animate-fadeInUp delay-200">Back-End Developer & Web Application Enthusiast</p>
+            <p class="text-gray-600 animate-fadeInUp delay-300">Lulusan Teknik Informatika dengan passion di Back-End Development, pengembangan aplikasi web, dan Machine Learning.</p>
+            <div class="flex space-x-4 animate-fadeInUp delay-400">
+              <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Get In Touch</a>
+              <a href="https://github.com/R1fky" target="_blank" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition">View GitHub</a>
+            </div>
+          </div>
+          <div class="flex justify-center animate-fadeIn delay-500">
+            <div class="w-64 h-64 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-2xl">
+              <div class="text-white text-8xl font-bold">RY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Tentang Saya</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="space-y-4">
+            <p class="text-gray-700 leading-relaxed">Saya adalah lulusan Teknik Informatika dari Politeknik Negeri Lhokseumawe dengan minat mendalam pada Back-End Development, pengembangan aplikasi web, dan teknologi Machine Learning.</p>
+            <p class="text-gray-700 leading-relaxed">
+              Berpengalaman magang di PT Pertamina Patra Niaga Lhokseumawe serta UIN Lhokseumawe, dengan keterlibatan dalam pengelolaan data dan operasional sistem. Saya adalah individu yang antusias belajar, adaptif terhadap teknologi
+              baru, dan berorientasi pada hasil.
+            </p>
+          </div>
+          <div class="space-y-4">
+            <div class="border-l-4 border-blue-600 pl-4">
+              <h3 class="font-bold text-xl mb-2">Pendidikan</h3>
+              <p class="text-gray-700">Politeknik Negeri Lhokseumawe</p>
+              <p class="text-gray-600 text-sm">Teknik Informatika | 2021 - 2025</p>
+            </div>
+            <div class="border-l-4 border-purple-600 pl-4">
+              <h3 class="font-bold text-xl mb-2">Lokasi</h3>
+              <p class="text-gray-700">Blang Poroh, Lhokseumawe</p>
+            </div>
+            <div class="border-l-4 border-green-600 pl-4">
+              <h3 class="font-bold text-xl mb-2">Bahasa</h3>
+              <p class="text-gray-700">Indonesia, English</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-gray-50">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Keterampilan</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="skill-card bg-white p-6 rounded-xl shadow-lg">
+            <div class="text-blue-600 text-4xl mb-4">⚙️</div>
+            <h3 class="font-bold text-xl mb-3">Back-End Development</h3>
+            <ul class="text-gray-600 space-y-2">
+              <li>• Node.js & Express.js</li>
+              <li>• Laravel</li>
+              <li>• MySQL & Prisma ORM</li>
+            </ul>
+          </div>
+          <div class="skill-card bg-white p-6 rounded-xl shadow-lg">
+            <div class="text-purple-600 text-4xl mb-4">🎨</div>
+            <h3 class="font-bold text-xl mb-3">Front-End & UI/UX</h3>
+            <ul class="text-gray-600 space-y-2">
+              <li>• HTML, CSS, Bootstrap</li>
+              <li>• Figma Design</li>
+              <li>• JavaScript</li>
+            </ul>
+          </div>
+          <div class="skill-card bg-white p-6 rounded-xl shadow-lg">
+            <div class="text-green-600 text-4xl mb-4">🤖</div>
+            <h3 class="font-bold text-xl mb-3">Machine Learning</h3>
+            <ul class="text-gray-600 space-y-2">
+              <li>• Python</li>
+              <li>• Model BERT</li>
+              <li>• Analisis Sentimen</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h3 class="text-2xl font-bold text-center mb-6">Soft Skills</h3>
+          <div class="flex flex-wrap justify-center gap-4">
+            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Problem Solving</span>
+            <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full">Kerja Tim</span>
+            <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full">Manajemen Waktu</span>
+            <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full">Adaptif</span>
+            <span class="bg-red-100 text-red-800 px-4 py-2 rounded-full">Komunikasi Efektif</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-4 gradient-text">Projects</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Berikut adalah beberapa project yang telah saya kerjakan menggunakan berbagai teknologi web development dan machine learning</p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Project Card 1 -->
+          <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+            <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+              <div class="text-white text-6xl">🌐</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Habit Tracker App</h3>
+              <p class="text-gray-600 mb-4">Backend API untuk sistem e-commerce dengan fitur authentication, product management, dan order processing.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="project-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+                <span class="project-tag bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Express.js</span>
+                <span class="project-tag bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+                <span class="project-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">EJS</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium">View Demo</button>
+                <a href="https://github.com/R1fky/habit-tracker.git" target="_blank" class="flex-1 border border-blue-600 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-50 transition text-sm font-medium"> GitHub </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+            <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+              <div class="text-white text-6xl">📱</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Monitoring Pekerja HSSE</h3>
+              <p class="text-gray-600 mb-4">Monitoring dan manajemen data dengan visualisasi chart dan real-time updates.</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="project-tag bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Laravel</span>
+                <span class="project-tag bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Bootstrap</span>
+                <span class="project-tag bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition text-sm font-medium">View Demo</button>
+                <!-- <button class="flex-1 border border-purple-600 text-purple-600 py-2 px-4 rounded-lg hover:bg-purple-50 transition text-sm font-medium">GitHub</button> -->
+                <a href="https://github.com/R1fky/pertaminaProject.git" target="_blank" class="flex-1 border border-purple-600 text-purple-600 py-2 px-4 rounded-lg hover:bg-purple-50 transition text-sm font-medium text-center inline-block">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+            <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
+              <div class="text-white text-6xl">🤖</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Sentiment Analysis App</h3>
+              <p class="text-gray-600 mb-4">Aplikasi analisis sentimen menggunakan model BERT untuk mengklasifikasi pendapat lulusan terhadap layanan akademik pada Politeknik Negeri Lhokseumawe</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="project-tag bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
+                <span class="project-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">BERT</span>
+                <span class="project-tag bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full">Flask</span>
+                <span class="project-tag bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Express.js</span>
+                <span class="project-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">EJS</span>
+              </div>
+              <div class="flex gap-3">
+                <button class="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition text-sm font-medium">View Demo</button>
+                <a href="https://github.com/R1fky/sentiment-bert.git" target="_blank" class="flex-1 border border-green-600 text-green-600 py-2 px-4 rounded-lg hover:bg-green-50 transition text-sm font-medium"> GitHub </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Pengalaman Kerja</h2>
+        <div class="space-y-8">
+          <div class="border-l-4 border-blue-600 pl-6 py-4">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">PT Pertamina Patra Niaga</h3>
+                <p class="text-blue-600 font-semibold">Magang - HSSE, Receiving, Storage, MPS</p>
+              </div>
+              <span class="text-gray-600 mt-2 md:mt-0">Feb 2024 - Aug 2024</span>
+            </div>
+            <ul class="text-gray-700 space-y-2 mt-4">
+              <li>• Melakukan perawatan dan pemeriksaan peralatan keselamatan serta pemantauan kegiatan discharge minyak</li>
+              <li>• Membantu penyusunan laporan audit dan pendataan distribusi minyak di terminal</li>
+              <li>• Terlibat dalam monitoring fasilitas serta proyek perbaikan dan peningkatan infrastruktur terminal</li>
+            </ul>
+          </div>
+
+          <div class="border-l-4 border-purple-600 pl-6 py-4">
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+              <div>
+                <h3 class="text-2xl font-bold text-gray-900">UIN Lhokseumawe</h3>
+                <p class="text-purple-600 font-semibold">Siswa PKL - Subbag Kemahasiswaan</p>
+              </div>
+              <span class="text-gray-600 mt-2 md:mt-0">Sep 2019 - Feb 2020</span>
+            </div>
+            <ul class="text-gray-700 space-y-2 mt-4">
+              <li>• Mengelola dan memperbarui data mahasiswa pada sistem web IAIN</li>
+              <li>• Melakukan input, verifikasi, dan pengarsipan berkas mahasiswa</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-50">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-8 gradient-text">Mari Terhubung</h2>
+        <p class="text-gray-700 mb-12 text-lg">Tertarik untuk bekerja sama? Jangan ragu untuk menghubungi saya!</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="mailto:rifkyyudha08@gmail.com" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+            <div class="text-4xl mb-2">📧</div>
+            <h3 class="font-bold mb-2">Email</h3>
+            <p class="text-gray-600 text-sm">rifkyyudha08@gmail.com</p>
+          </a>
+          <a href="https://github.com/R1fky" target="_blank" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+            <div class="text-4xl mb-2">💻</div>
+            <h3 class="font-bold mb-2">GitHub</h3>
+            <p class="text-gray-600 text-sm">@R1fky</p>
+          </a>
+          <a href="https://www.linkedin.com/in/rifky-yudha-pratama-45a3872a3/" target="_blank" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
+            <div class="text-4xl mb-2">💼</div>
+            <h3 class="font-bold mb-2">LinkedIn</h3>
+            <p class="text-gray-600 text-sm">Rifky Yudha Pratama</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 px-4">
+      <div class="max-w-6xl mx-auto text-center">
+        <p>&copy; 2025 Rifky Yudha Pratama. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll Animation for Skills Cards
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("show");
+            }, index * 100);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".skill-card").forEach((card) => {
+        observer.observe(card);
+      });
+
+      // Scroll Animation for Project Cards
+      document.querySelectorAll(".project-card").forEach((card) => {
+        observer.observe(card);
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
