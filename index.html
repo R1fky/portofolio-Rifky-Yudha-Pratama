@@ -1,22 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rifky Yudha Pratama - Portfolio</title>
+    <title>Rifky Yudha Pratama — Back-End Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <style>
+      :root {
+        --bg: #161219;
+        --bg-alt: #1d1822;
+        --panel: #221c29;
+        --panel-2: #2a2233;
+        --line: #35303e;
+        --ivory: #f2ece6;
+        --ivory-soft: #b3a9b8;
+        --accent: #c99b86;
+        --accent-soft: rgba(201, 155, 134, 0.12);
+        --accent-strong: #dcb49b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--ivory);
+        font-family: "Manrope", sans-serif;
+      }
+
+      .font-display {
+        font-family: "Newsreader", serif;
+      }
+      .font-mono {
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+
       @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(22px);
         }
         to {
           opacity: 1;
           transform: translateY(0);
         }
       }
-
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -25,422 +70,516 @@
           opacity: 1;
         }
       }
-
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
+      @keyframes glow {
+        0%,
+        100% {
+          opacity: 0.5;
         }
-        to {
-          opacity: 1;
-          transform: translateX(0);
+        50% {
+          opacity: 0.85;
         }
       }
 
       .animate-fadeInUp {
-        animation: fadeInUp 0.8s ease-out forwards;
+        animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
       }
-
       .animate-fadeIn {
-        animation: fadeIn 1s ease-out forwards;
+        animation: fadeIn 1.1s ease-out forwards;
       }
-
-      .animate-slideInLeft {
-        animation: slideInLeft 0.8s ease-out forwards;
-      }
-
       .delay-100 {
         animation-delay: 0.1s;
+        opacity: 0;
       }
       .delay-200 {
         animation-delay: 0.2s;
+        opacity: 0;
       }
       .delay-300 {
         animation-delay: 0.3s;
+        opacity: 0;
       }
       .delay-400 {
         animation-delay: 0.4s;
-      }
-      .delay-500 {
-        animation-delay: 0.5s;
-      }
-
-      .skill-card {
-        transition: all 0.3s ease;
         opacity: 0;
       }
 
-      .skill-card.show {
-        opacity: 1;
-        animation: fadeInUp 0.6s ease-out forwards;
-      }
-
-      .skill-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-      }
-
-      .project-card {
-        transition: all 0.4s ease;
+      .reveal {
         opacity: 0;
       }
-
-      .project-card.show {
+      .reveal.show {
         opacity: 1;
-        animation: fadeInUp 0.6s ease-out forwards;
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-      }
-
-      .project-tag {
-        transition: all 0.2s ease;
-      }
-
-      .project-tag:hover {
-        transform: scale(1.05);
+        animation: fadeInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
       }
 
       .nav-link {
         position: relative;
-        transition: color 0.3s ease;
+        color: var(--ivory-soft);
+        transition: color 0.25s ease;
       }
-
+      .nav-link:hover {
+        color: var(--ivory);
+      }
       .nav-link::after {
         content: "";
         position: absolute;
         width: 0;
-        height: 2px;
-        bottom: -5px;
+        height: 1px;
+        bottom: -4px;
         left: 0;
-        background-color: #3b82f6;
+        background: var(--accent);
         transition: width 0.3s ease;
       }
-
       .nav-link:hover::after {
         width: 100%;
       }
 
-      .gradient-text {
-        background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .card-hover {
+        transition:
+          transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.4s ease,
+          border-color 0.4s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+        border-color: var(--accent);
       }
 
-      html {
-        scroll-behavior: smooth;
+      .tag-pill {
+        transition:
+          border-color 0.25s ease,
+          color 0.25s ease,
+          background 0.25s ease;
+      }
+      .tag-pill:hover {
+        border-color: var(--accent);
+        color: var(--accent-strong);
+        background: var(--accent-soft);
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: var(--bg);
+        transition:
+          background 0.25s ease,
+          transform 0.25s ease;
+      }
+      .btn-primary:hover {
+        background: var(--accent-strong);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        border: 1px solid var(--line);
+        color: var(--ivory);
+        transition: all 0.25s ease;
+      }
+      .btn-outline:hover {
+        border-color: var(--accent);
+        color: var(--accent-strong);
+        transform: translateY(-2px);
+      }
+
+      .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
+      }
+
+      .eyebrow {
+        color: var(--accent-strong);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+      }
+      .eyebrow-rule {
+        display: inline-block;
+        width: 28px;
+        height: 1px;
+        background: var(--accent);
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+
+      ::selection {
+        background: var(--accent-soft);
+        color: var(--accent-strong);
+      }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .glow-orb {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(90px);
+        background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+        animation: glow 6s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .photo-frame {
+        position: relative;
+        padding: 14px;
+      }
+      .photo-frame::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 1px solid var(--accent);
+        border-radius: 6px;
+      }
+      .photo-inner {
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .avatar-placeholder {
+        background: linear-gradient(160deg, var(--panel-2) 0%, var(--bg) 100%);
+      }
+
+      .stat-number {
+        font-variant-numeric: tabular-nums;
       }
     </style>
   </head>
-  <body class="bg-gray-50 text-gray-800">
+  <body class="bg-[var(--bg)] text-[var(--ivory)]">
     <!-- Navigation -->
-    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed w-full top-0 z-50 backdrop-blur-md bg-[var(--bg)]/85 border-b border-[var(--line)]">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-          <div class="text-2xl font-bold gradient-text">RYP</div>
-          <div class="hidden md:flex space-x-8">
-            <a href="#home" class="nav-link text-gray-700 hover:text-blue-600">Home</a>
-            <a href="#about" class="nav-link text-gray-700 hover:text-blue-600">About</a>
-            <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600">Skills</a>
-            <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600">Projects</a>
-            <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600">Experience</a>
-            <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600">Contact</a>
+          <div class="font-display italic text-xl tracking-tight">R. Yudha Pratama</div>
+          <div class="hidden md:flex items-center space-x-8 text-sm">
+            <a href="#about" class="nav-link">Tentang</a>
+            <a href="#skills" class="nav-link">Keahlian</a>
+            <a href="#projects" class="nav-link">Proyek</a>
+            <a href="#experience" class="nav-link">Pengalaman</a>
+            <a href="#certificates" class="nav-link">Sertifikasi</a>
+            <a href="#contact" class="btn-primary px-5 py-2 rounded-full text-sm font-medium">Hubungi</a>
           </div>
         </div>
       </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 px-4 min-h-screen flex items-center">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="space-y-6">
-            <h1 class="text-5xl md:text-6xl font-bold text-gray-900 animate-fadeInUp">Hi, I'm <span class="gradient-text">Rifky Yudha Pratama</span></h1>
-            <p class="text-xl text-gray-600 animate-fadeInUp delay-200">Back-End Developer & Web Application Enthusiast</p>
-            <p class="text-gray-600 animate-fadeInUp delay-300">Lulusan Teknik Informatika dengan passion di Back-End Development, pengembangan aplikasi web, dan Machine Learning.</p>
-            <div class="flex space-x-4 animate-fadeInUp delay-400">
-              <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">Get In Touch</a>
-              <a href="https://github.com/R1fky" target="_blank" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition">View GitHub</a>
+    <section id="home" class="relative pt-32 pb-24 px-6 overflow-hidden">
+      <div class="glow-orb w-96 h-96 -top-20 -left-20"></div>
+      <div class="glow-orb w-96 h-96 top-40 -right-32" style="animation-delay: 2s"></div>
+
+      <div class="max-w-6xl mx-auto relative">
+        <div class="grid md:grid-cols-5 gap-14 items-center">
+          <div class="md:col-span-3 space-y-7">
+            <p class="eyebrow animate-fadeInUp"><span class="eyebrow-rule"></span>Back-End Developer · 2026</p>
+            <h1 class="font-display text-[2.75rem] md:text-6xl leading-[1.08] tracking-tight animate-fadeInUp delay-100">
+              Rifky Yudha Pratama —<br /><span class="italic text-[var(--accent-strong)]">merancang sistem</span><br />yang elegan &amp; andal.
+            </h1>
+            <p class="text-[var(--ivory-soft)] leading-relaxed max-w-md animate-fadeInUp delay-200">
+              Lulusan Teknik Informatika yang fokus pada Back-End Development, arsitektur aplikasi web, serta penerapan Machine Learning untuk solusi berbasis data.
+            </p>
+            <div class="flex flex-wrap gap-4 animate-fadeInUp delay-300">
+              <a href="#contact" class="btn-primary px-6 py-3 rounded-full font-medium text-sm">Hubungi Saya</a>
+              <a href="https://github.com/R1fky" target="_blank" class="btn-outline px-6 py-3 rounded-full font-medium text-sm">Lihat GitHub</a>
+            </div>
+            <div class="flex gap-10 pt-4 animate-fadeInUp delay-400">
+              <div>
+                <p class="font-display text-3xl stat-number">3+</p>
+                <p class="text-xs text-[var(--ivory-soft)] mt-1">Proyek Dikerjakan</p>
+              </div>
+              <div>
+                <p class="font-display text-3xl stat-number">2</p>
+                <p class="text-xs text-[var(--ivory-soft)] mt-1">Pengalaman Magang</p>
+              </div>
+              <div>
+                <p class="font-display text-3xl stat-number">2</p>
+                <p class="text-xs text-[var(--ivory-soft)] mt-1">Sertifikasi</p>
+              </div>
             </div>
           </div>
-          <div class="flex justify-center animate-fadeIn delay-500">
-            <div class="w-64 h-64 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center shadow-2xl">
-              <div class="text-white text-8xl font-bold">RY</div>
+
+          <div class="md:col-span-2 flex justify-center md:justify-end animate-fadeIn delay-400">
+            <div class="photo-frame w-64 md:w-72">
+              <div class="photo-inner">
+                <img src="assets/foto-rifky.png" alt="Rifky Yudha Pratama" class="w-full aspect-[4/5] object-cover" />
+              </div>
+              <div class="flex justify-between items-center mt-4 px-1">
+                <p class="font-mono text-xs text-[var(--ivory-soft)]">Lhokseumawe, ID</p>
+                <p class="font-mono text-xs text-[var(--accent-strong)]">Tersedia untuk kerja</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <div class="max-w-6xl mx-auto px-6"><div class="divider"></div></div>
+
     <!-- About Section -->
-    <section id="about" class="py-20 px-4 bg-white">
+    <section id="about" class="py-24 px-6">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Tentang Saya</h2>
-        <div class="grid md:grid-cols-2 gap-12">
-          <div class="space-y-4">
-            <p class="text-gray-700 leading-relaxed">Saya adalah lulusan Teknik Informatika dari Politeknik Negeri Lhokseumawe dengan minat mendalam pada Back-End Development, pengembangan aplikasi web, dan teknologi Machine Learning.</p>
-            <p class="text-gray-700 leading-relaxed">
-              Berpengalaman magang di PT Pertamina Patra Niaga Lhokseumawe serta UIN Lhokseumawe, dengan keterlibatan dalam pengelolaan data dan operasional sistem. Saya adalah individu yang antusias belajar, adaptif terhadap teknologi
+        <p class="eyebrow mb-4 reveal"><span class="eyebrow-rule"></span>Profil</p>
+        <h2 class="font-display text-4xl mb-14 reveal">Tentang Saya</h2>
+        <div class="grid md:grid-cols-5 gap-12">
+          <div class="md:col-span-3 space-y-5 reveal">
+            <p class="text-[var(--ivory-soft)] leading-relaxed text-lg font-display">
+              Saya adalah lulusan Teknik Informatika dari Politeknik Negeri Lhokseumawe dengan minat mendalam pada Back-End Development, pengembangan aplikasi web, dan teknologi Machine Learning.
+            </p>
+            <p class="text-[var(--ivory-soft)] leading-relaxed">
+              Berpengalaman magang di PT Pertamina Patra Niaga Lhokseumawe, dengan keterlibatan dalam pengembangan sistem digital serta pengelolaan data dan operasional. Saya adalah individu yang antusias belajar, adaptif terhadap teknologi
               baru, dan berorientasi pada hasil.
             </p>
           </div>
-          <div class="space-y-4">
-            <div class="border-l-4 border-blue-600 pl-4">
-              <h3 class="font-bold text-xl mb-2">Pendidikan</h3>
-              <p class="text-gray-700">Politeknik Negeri Lhokseumawe</p>
-              <p class="text-gray-600 text-sm">Teknik Informatika | 2021 - 2025</p>
+          <div class="md:col-span-2 space-y-4 reveal">
+            <div class="border border-[var(--line)] rounded-lg p-5 bg-[var(--panel)]">
+              <p class="font-mono text-xs text-[var(--accent-strong)] mb-1">Pendidikan</p>
+              <p class="font-semibold">Politeknik Negeri Lhokseumawe</p>
+              <p class="text-[var(--ivory-soft)] text-sm">Teknik Informatika · 2021 – 2025</p>
             </div>
-            <div class="border-l-4 border-purple-600 pl-4">
-              <h3 class="font-bold text-xl mb-2">Lokasi</h3>
-              <p class="text-gray-700">Blang Poroh, Lhokseumawe</p>
+            <div class="border border-[var(--line)] rounded-lg p-5 bg-[var(--panel)]">
+              <p class="font-mono text-xs text-[var(--accent-strong)] mb-1">Lokasi</p>
+              <p class="font-semibold">Blang Poroh, Lhokseumawe</p>
             </div>
-            <div class="border-l-4 border-green-600 pl-4">
-              <h3 class="font-bold text-xl mb-2">Bahasa</h3>
-              <p class="text-gray-700">Indonesia, English</p>
+            <div class="border border-[var(--line)] rounded-lg p-5 bg-[var(--panel)]">
+              <p class="font-mono text-xs text-[var(--accent-strong)] mb-1">Bahasa</p>
+              <p class="font-semibold">Indonesia, English</p>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <div class="max-w-6xl mx-auto px-6"><div class="divider"></div></div>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20 px-4 bg-gray-50">
+    <section id="skills" class="py-24 px-6">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Keterampilan</h2>
+        <p class="eyebrow mb-4 reveal"><span class="eyebrow-rule"></span>Kemampuan</p>
+        <h2 class="font-display text-4xl mb-14 reveal">Keterampilan</h2>
+
         <div class="grid md:grid-cols-3 gap-6">
-          <div class="skill-card bg-white p-6 rounded-xl shadow-lg">
-            <div class="text-blue-600 text-4xl mb-4">⚙️</div>
-            <h3 class="font-bold text-xl mb-3">Back-End Development</h3>
-            <ul class="text-gray-600 space-y-2">
-              <li>• Node.js & Express.js</li>
-              <li>• Laravel</li>
-              <li>• MySQL & Prisma ORM</li>
+          <div class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] rounded-xl p-7">
+            <h3 class="font-display text-xl mb-4">Back-End Development</h3>
+            <ul class="text-[var(--ivory-soft)] space-y-2 text-sm">
+              <li>Node.js &amp; Express.js</li>
+              <li>Laravel</li>
+              <li>MySQL &amp; Prisma ORM</li>
             </ul>
           </div>
-          <div class="skill-card bg-white p-6 rounded-xl shadow-lg">
-            <div class="text-purple-600 text-4xl mb-4">🎨</div>
-            <h3 class="font-bold text-xl mb-3">Front-End & UI/UX</h3>
-            <ul class="text-gray-600 space-y-2">
-              <li>• HTML, CSS, Bootstrap</li>
-              <li>• Figma Design</li>
-              <li>• JavaScript</li>
+          <div class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] rounded-xl p-7">
+            <h3 class="font-display text-xl mb-4">Front-End &amp; UI/UX</h3>
+            <ul class="text-[var(--ivory-soft)] space-y-2 text-sm">
+              <li>HTML, CSS, Bootstrap</li>
+              <li>Figma Design</li>
+              <li>JavaScript</li>
             </ul>
           </div>
-          <div class="skill-card bg-white p-6 rounded-xl shadow-lg">
-            <div class="text-green-600 text-4xl mb-4">🤖</div>
-            <h3 class="font-bold text-xl mb-3">Machine Learning</h3>
-            <ul class="text-gray-600 space-y-2">
-              <li>• Python</li>
-              <li>• Model BERT</li>
-              <li>• Analisis Sentimen</li>
+          <div class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] rounded-xl p-7">
+            <h3 class="font-display text-xl mb-4">Machine Learning</h3>
+            <ul class="text-[var(--ivory-soft)] space-y-2 text-sm">
+              <li>Python</li>
+              <li>Model BERT</li>
+              <li>Analisis Sentimen</li>
             </ul>
           </div>
         </div>
 
-        <div class="mt-12">
-          <h3 class="text-2xl font-bold text-center mb-6">Soft Skills</h3>
-          <div class="flex flex-wrap justify-center gap-4">
-            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full">Problem Solving</span>
-            <span class="bg-purple-100 text-purple-800 px-4 py-2 rounded-full">Kerja Tim</span>
-            <span class="bg-green-100 text-green-800 px-4 py-2 rounded-full">Manajemen Waktu</span>
-            <span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full">Adaptif</span>
-            <span class="bg-red-100 text-red-800 px-4 py-2 rounded-full">Komunikasi Efektif</span>
+        <div class="mt-14 reveal">
+          <p class="font-mono text-xs text-[var(--ivory-soft)] mb-4 uppercase tracking-wide">Soft Skills</p>
+          <div class="flex flex-wrap gap-3">
+            <span class="tag-pill border border-[var(--line)] text-[var(--ivory-soft)] px-4 py-2 rounded-full text-sm">Problem Solving</span>
+            <span class="tag-pill border border-[var(--line)] text-[var(--ivory-soft)] px-4 py-2 rounded-full text-sm">Kerja Tim</span>
+            <span class="tag-pill border border-[var(--line)] text-[var(--ivory-soft)] px-4 py-2 rounded-full text-sm">Manajemen Waktu</span>
+            <span class="tag-pill border border-[var(--line)] text-[var(--ivory-soft)] px-4 py-2 rounded-full text-sm">Adaptif</span>
+            <span class="tag-pill border border-[var(--line)] text-[var(--ivory-soft)] px-4 py-2 rounded-full text-sm">Komunikasi Efektif</span>
           </div>
         </div>
       </div>
     </section>
+
+    <div class="max-w-6xl mx-auto px-6"><div class="divider"></div></div>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 bg-white">
+    <section id="projects" class="py-24 px-6">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-4 gradient-text">Projects</h2>
-        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Berikut adalah beberapa project yang telah saya kerjakan menggunakan berbagai teknologi web development dan machine learning</p>
+        <p class="eyebrow mb-4 reveal"><span class="eyebrow-rule"></span>Karya</p>
+        <h2 class="font-display text-4xl mb-4 reveal">Projects</h2>
+        <p class="text-[var(--ivory-soft)] mb-14 max-w-2xl reveal">Beberapa project yang telah saya kerjakan menggunakan berbagai teknologi web development dan machine learning.</p>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project Card 1 -->
-          <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
-            <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-              <div class="text-white text-6xl">🌐</div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Habit Tracker App</h3>
-              <p class="text-gray-600 mb-4">
-                Aplikasi web yang membantu pengguna mencatat, memantau, dan mengevaluasi kebiasaan harian mereka. Fitur utama termasuk pembuatan habit, pencatatan progress harian, tampilan statistik mingguan untuk memotivasi konsistensi,
-                serta notifikasi pengingat agar pengguna tetap konsisten menjalankan kebiasaan.
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] rounded-xl overflow-hidden flex flex-col">
+            <div class="p-6 flex-1">
+              <p class="font-mono text-xs text-[var(--accent-strong)] mb-3">WEB APP</p>
+              <h3 class="font-display text-xl mb-3">Habit Tracker App</h3>
+              <p class="text-[var(--ivory-soft)] text-sm leading-relaxed mb-5">
+                Aplikasi web untuk mencatat, memantau, dan mengevaluasi kebiasaan harian. Menyediakan statistik mingguan dan notifikasi pengingat agar pengguna tetap konsisten.
               </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="project-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Node.js</span>
-                <span class="project-tag bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Express.js</span>
-                <span class="project-tag bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">MySQL</span>
-                <span class="project-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">EJS</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">Node.js</span>
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">Express.js</span>
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">MySQL</span>
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">EJS</span>
               </div>
-              <div class="flex gap-3">
-                <button class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium">View Demo</button>
-                <a href="https://github.com/R1fky/habit-tracker.git" target="_blank" class="flex-1 border border-blue-600 text-blue-600 py-2 px-4 rounded-lg hover:bg-blue-50 transition text-sm font-medium"> GitHub </a>
-              </div>
+            </div>
+            <div class="flex border-t border-[var(--line)]">
+              <button class="flex-1 py-3 text-sm font-medium text-[var(--ivory-soft)] hover:text-[var(--accent-strong)] transition">View Demo</button>
+              <a href="https://github.com/R1fky/habit-tracker.git" target="_blank" class="flex-1 py-3 text-sm font-medium text-center border-l border-[var(--line)] text-[var(--ivory-soft)] hover:text-[var(--accent-strong)] transition"
+                >GitHub</a
+              >
             </div>
           </div>
 
-          <!-- Project Card 2 -->
-          <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
-            <div class="h-48 bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
-              <div class="text-white text-6xl">📱</div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Monitoring Pekerja HSSE</h3>
-              <p class="text-gray-600 mb-4">
-                Aplikasi web untuk memantau pekerjaan HSSE (Health, Safety, Security, Environment). Setiap pekerjaan yang selesai akan dikonfirmasi oleh manager dan SPV HSSE, lalu pekerja menerima notifikasi persetujuan. Selain itu, pekerja
-                juga mendapatkan notifikasi pekerjaan baru secara real-time untuk memastikan alur kerja tetap terpantau dan efisien.
+          <div class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] rounded-xl overflow-hidden flex flex-col">
+            <div class="p-6 flex-1">
+              <p class="font-mono text-xs text-[var(--accent-strong)] mb-3">MONITORING SYSTEM</p>
+              <h3 class="font-display text-xl mb-3">Monitoring Pekerja HSSE</h3>
+              <p class="text-[var(--ivory-soft)] text-sm leading-relaxed mb-5">
+                Aplikasi web untuk memantau pekerjaan HSSE. Setiap pekerjaan yang selesai dikonfirmasi oleh manager dan SPV, dengan notifikasi real-time untuk pekerjaan baru.
               </p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="project-tag bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Laravel</span>
-                <span class="project-tag bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Bootstrap</span>
-                <span class="project-tag bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+              <div class="flex flex-wrap gap-2">
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">Laravel</span>
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">Bootstrap</span>
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">MySQL</span>
               </div>
-              <div class="flex gap-3">
-                <button class="flex-1 bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition text-sm font-medium">View Demo</button>
-                <!-- <button class="flex-1 border border-purple-600 text-purple-600 py-2 px-4 rounded-lg hover:bg-purple-50 transition text-sm font-medium">GitHub</button> -->
-                <a href="https://github.com/R1fky/pertaminaProject.git" target="_blank" class="flex-1 border border-purple-600 text-purple-600 py-2 px-4 rounded-lg hover:bg-purple-50 transition text-sm font-medium text-center inline-block">
-                  GitHub
-                </a>
-              </div>
+            </div>
+            <div class="flex border-t border-[var(--line)]">
+              <button class="flex-1 py-3 text-sm font-medium text-[var(--ivory-soft)] hover:text-[var(--accent-strong)] transition">View Demo</button>
+              <a href="https://github.com/R1fky/pertaminaProject.git" target="_blank" class="flex-1 py-3 text-sm font-medium text-center border-l border-[var(--line)] text-[var(--ivory-soft)] hover:text-[var(--accent-strong)] transition"
+                >GitHub</a
+              >
             </div>
           </div>
 
-          <!-- Project Card 3 -->
-          <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
-            <div class="h-48 bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center">
-              <div class="text-white text-6xl">🤖</div>
+          <div class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] rounded-xl overflow-hidden flex flex-col">
+            <div class="p-6 flex-1">
+              <p class="font-mono text-xs text-[var(--accent-strong)] mb-3">MACHINE LEARNING</p>
+              <h3 class="font-display text-xl mb-3">Sentiment Analysis App</h3>
+              <p class="text-[var(--ivory-soft)] text-sm leading-relaxed mb-5">Aplikasi analisis sentimen menggunakan model BERT untuk mengklasifikasi pendapat lulusan terhadap layanan akademik pada Politeknik Negeri Lhokseumawe.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">Python</span>
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">BERT</span>
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">Flask</span>
+                <span class="font-mono text-xs border border-[var(--line)] text-[var(--ivory-soft)] px-2.5 py-1 rounded">Express.js</span>
+              </div>
             </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Sentiment Analysis App</h3>
-              <p class="text-gray-600 mb-4">Aplikasi analisis sentimen menggunakan model BERT untuk mengklasifikasi pendapat lulusan terhadap layanan akademik pada Politeknik Negeri Lhokseumawe</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                <span class="project-tag bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
-                <span class="project-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">BERT</span>
-                <span class="project-tag bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full">Flask</span>
-                <span class="project-tag bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Express.js</span>
-                <span class="project-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">EJS</span>
-              </div>
-              <div class="flex gap-3">
-                <button class="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition text-sm font-medium">View Demo</button>
-                <a href="https://github.com/R1fky/sentiment-bert.git" target="_blank" class="flex-1 border border-green-600 text-green-600 py-2 px-4 rounded-lg hover:bg-green-50 transition text-sm font-medium"> GitHub </a>
-              </div>
+            <div class="flex border-t border-[var(--line)]">
+              <button class="flex-1 py-3 text-sm font-medium text-[var(--ivory-soft)] hover:text-[var(--accent-strong)] transition">View Demo</button>
+              <a href="https://github.com/R1fky/sentiment-bert.git" target="_blank" class="flex-1 py-3 text-sm font-medium text-center border-l border-[var(--line)] text-[var(--ivory-soft)] hover:text-[var(--accent-strong)] transition"
+                >GitHub</a
+              >
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <div class="max-w-6xl mx-auto px-6"><div class="divider"></div></div>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20 px-4 bg-white">
+    <section id="experience" class="py-24 px-6">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Pengalaman Kerja</h2>
-        <div class="space-y-8">
-          <div class="border-l-4 border-blue-600 pl-6 py-4">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-              <div>
-                <h3 class="text-2xl font-bold text-gray-900">PT Pertamina Patra Niaga</h3>
-                <p class="text-blue-600 font-semibold">Magang - HSSE, Receiving, Storage, MPS</p>
-              </div>
-              <span class="text-gray-600 mt-2 md:mt-0">Feb 2024 - Aug 2024</span>
-            </div>
-            <ul class="text-gray-700 space-y-2 mt-4">
-              <li>• Melakukan perawatan dan pemeriksaan peralatan keselamatan serta pemantauan kegiatan discharge minyak</li>
-              <li>• Membantu penyusunan laporan audit dan pendataan distribusi minyak di terminal</li>
-              <li>• Terlibat dalam monitoring fasilitas serta proyek perbaikan dan peningkatan infrastruktur terminal</li>
-            </ul>
-          </div>
+        <p class="eyebrow mb-4 reveal"><span class="eyebrow-rule"></span>Rekam Jejak</p>
+        <h2 class="font-display text-4xl mb-14 reveal">Pengalaman Kerja</h2>
 
-          <div class="border-l-4 border-purple-600 pl-6 py-4">
-            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-              <div>
-                <h3 class="text-2xl font-bold text-gray-900">UIN Lhokseumawe</h3>
-                <p class="text-purple-600 font-semibold">Siswa PKL - Subbag Kemahasiswaan</p>
-              </div>
-              <span class="text-gray-600 mt-2 md:mt-0">Sep 2019 - Feb 2020</span>
+        <div class="reveal border border-[var(--line)] bg-[var(--panel)] rounded-xl p-8">
+          <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+            <div>
+              <h3 class="font-display text-2xl mb-1">PT Pertamina Patra Niaga</h3>
+              <p class="text-[var(--accent-strong)] text-sm">Magang — HSSE, Receiving, Storage, MPS</p>
             </div>
-            <ul class="text-gray-700 space-y-2 mt-4">
-              <li>• Mengelola dan memperbarui data mahasiswa pada sistem web IAIN</li>
-              <li>• Melakukan input, verifikasi, dan pengarsipan berkas mahasiswa</li>
-            </ul>
+            <span class="font-mono text-sm text-[var(--ivory-soft)] whitespace-nowrap">Feb 2024 – Aug 2024</span>
           </div>
+          <ul class="text-[var(--ivory-soft)] space-y-3 mt-5 text-sm leading-relaxed list-disc list-outside pl-5">
+            <li>Mengembangkan website monitoring pekerjaan HSSE berbasis real-time menggunakan Laravel sebagai back-end untuk meningkatkan transparansi dan efisiensi pengawasan operasional.</li>
+            <li>Merancang UI/UX sistem menggunakan Figma serta mengimplementasikan antarmuka responsif dengan Bootstrap.</li>
+            <li>Mengimplementasikan fitur utama sistem, meliputi unggah bukti pekerjaan, alur verifikasi berjenjang (SPV–Manager), notifikasi otomatis, dan dashboard statistik status pekerjaan.</li>
+            <li>Berkontribusi dalam digitalisasi proses monitoring dan pelaporan HSSE guna mendukung pengambilan keputusan manajemen.</li>
+            <li>Mendukung aktivitas operasional terminal, termasuk pemeriksaan peralatan keselamatan, pemantauan discharge minyak, serta penyusunan laporan audit dan dokumentasi HSSE.</li>
+          </ul>
         </div>
       </div>
     </section>
 
+    <div class="max-w-6xl mx-auto px-6"><div class="divider"></div></div>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="eyebrow mb-4 reveal"><span class="eyebrow-rule"></span>Sertifikasi</p>
+        <h2 class="font-display text-4xl mb-14 reveal">Sertifikat</h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <a href="assets/sertifikat-bnsp-web-developer.pdf" target="_blank" class="reveal card-hover group border border-[var(--line)] bg-[var(--panel)] rounded-xl p-7 flex items-start justify-between gap-4">
+            <div>
+              <p class="font-mono text-xs text-[var(--ivory-soft)] mb-2">2025</p>
+              <h3 class="font-display text-lg mb-2">Junior Web Developer</h3>
+              <p class="text-[var(--ivory-soft)] text-sm">Sertifikasi Kompetensi BNSP — Pengembang Web</p>
+            </div>
+            <span class="font-mono text-xs text-[var(--accent-strong)] border border-[var(--line)] rounded-full px-3 py-1.5 whitespace-nowrap group-hover:bg-[var(--accent-soft)] transition">Lihat →</span>
+          </a>
+
+          <a href="assets/sertifikat-data-analyst.pdf" target="_blank" class="reveal card-hover group border border-[var(--line)] bg-[var(--panel)] rounded-xl p-7 flex items-start justify-between gap-4">
+            <div>
+              <p class="font-mono text-xs text-[var(--ivory-soft)] mb-2">2026</p>
+              <h3 class="font-display text-lg mb-2">Bootcamp Data Analyst</h3>
+              <p class="text-[var(--ivory-soft)] text-sm">Data Analyst menggunakan Excel dan SQL — predikat Expert</p>
+            </div>
+            <span class="font-mono text-xs text-[var(--accent-strong)] border border-[var(--line)] rounded-full px-3 py-1.5 whitespace-nowrap group-hover:bg-[var(--accent-soft)] transition">Lihat →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-6xl mx-auto px-6"><div class="divider"></div></div>
+
     <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4 bg-gray-50">
+    <section id="contact" class="py-24 px-6">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-8 gradient-text">Mari Terhubung</h2>
-        <p class="text-gray-700 mb-12 text-lg">Tertarik untuk bekerja sama? Jangan ragu untuk menghubungi saya!</p>
+        <p class="eyebrow mb-4 reveal"><span class="eyebrow-rule"></span>Kontak</p>
+        <h2 class="font-display text-4xl mb-6 reveal">Mari Terhubung</h2>
+        <p class="text-[var(--ivory-soft)] mb-14 text-lg reveal">Tertarik untuk bekerja sama? Jangan ragu untuk menghubungi saya.</p>
         <div class="grid md:grid-cols-3 gap-6">
-          <a href="mailto:rifkyyudha08@gmail.com" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
-            <div class="text-4xl mb-2">📧</div>
-            <h3 class="font-bold mb-2">Email</h3>
-            <p class="text-gray-600 text-sm">rifkyyudha08@gmail.com</p>
+          <a href="mailto:rifkyyudha08@gmail.com" class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] p-6 rounded-xl">
+            <p class="font-mono text-xs text-[var(--accent-strong)] mb-2">Email</p>
+            <p class="text-sm text-[var(--ivory-soft)]">rifkyyudha08@gmail.com</p>
           </a>
-          <a href="https://github.com/R1fky" target="_blank" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
-            <div class="text-4xl mb-2">💻</div>
-            <h3 class="font-bold mb-2">GitHub</h3>
-            <p class="text-gray-600 text-sm">@R1fky</p>
+          <a href="https://github.com/R1fky" target="_blank" class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] p-6 rounded-xl">
+            <p class="font-mono text-xs text-[var(--accent-strong)] mb-2">GitHub</p>
+            <p class="text-sm text-[var(--ivory-soft)]">@R1fky</p>
           </a>
-          <a href="https://www.linkedin.com/in/rifky-yudha-pratama-45a3872a3/" target="_blank" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition">
-            <div class="text-4xl mb-2">💼</div>
-            <h3 class="font-bold mb-2">LinkedIn</h3>
-            <p class="text-gray-600 text-sm">Rifky Yudha Pratama</p>
+          <a href="https://www.linkedin.com/in/rifky-yudha-pratama-45a3872a3/" target="_blank" class="reveal card-hover border border-[var(--line)] bg-[var(--panel)] p-6 rounded-xl">
+            <p class="font-mono text-xs text-[var(--accent-strong)] mb-2">LinkedIn</p>
+            <p class="text-sm text-[var(--ivory-soft)]">Rifky Yudha Pratama</p>
           </a>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <p>&copy; 2025 Rifky Yudha Pratama. All rights reserved.</p>
+    <footer class="border-t border-[var(--line)] py-8 px-6">
+      <div class="max-w-6xl mx-auto text-center font-mono text-xs text-[var(--ivory-soft)]">
+        <p>&copy; 2026 Rifky Yudha Pratama. All rights reserved.</p>
       </div>
     </footer>
 
     <script>
-      // Scroll Animation for Skills Cards
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
+      const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add("show");
-            }, index * 100);
+            setTimeout(() => entry.target.classList.add("show"), index * 70);
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-      document.querySelectorAll(".skill-card").forEach((card) => {
-        observer.observe(card);
-      });
-
-      // Scroll Animation for Project Cards
-      document.querySelectorAll(".project-card").forEach((card) => {
-        observer.observe(card);
-      });
-
-      // Smooth scroll for navigation links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href === "#") return;
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
     </script>
