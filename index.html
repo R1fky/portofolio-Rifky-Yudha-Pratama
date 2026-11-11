@@ -425,6 +425,21 @@
         font-weight: 500;
         font-size: 0.85rem;
       }
+      .it-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 8px 20px;
+      }
+      .it-meta .date {
+        margin-left: auto;
+        text-align: right;
+      }
+      @media (max-width: 560px) {
+        .it-meta { align-items: flex-start; flex-direction: column; gap: 2px; }
+        .it-meta .date { margin-left: 0; text-align: left; }
+      }
       .it h3 {
         font-size: 1.65rem;
         margin: 2px 0;
@@ -935,7 +950,15 @@
       .flow > * {
         min-width: 0;
       }
-      p, li, h1, h2, h3, h4, a, small, span {
+      p,
+      li,
+      h1,
+      h2,
+      h3,
+      h4,
+      a,
+      small,
+      span {
         overflow-wrap: anywhere;
       }
       .btn,
@@ -1148,17 +1171,15 @@
           font-size: 1.85rem;
         }
       }
-
     </style>
   </head>
   <body>
     <div id="bar"></div>
     <nav id="nav" aria-label="Navigasi">
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
-        <span>Menu</span><span class="nav-toggle-icon" aria-hidden="true">☰</span>
-      </button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links"><span>Menu</span><span class="nav-toggle-icon" aria-hidden="true">☰</span></button>
       <div class="nav-links" id="nav-links">
-      <a href="#hero">Beranda</a><a href="#tentang">Tentang</a><a href="#skill">Keahlian</a><a href="#karya">Pengalaman</a><a href="#project">Project</a><a href="#mkt">Marketing</a><a href="#cert">Sertifikasi</a><a href="#kontak">Kontak</a>
+        <a href="#hero">Beranda</a><a href="#tentang">Tentang</a><a href="#skill">Keahlian</a><a href="#karya">Pengalaman</a><a href="#project">Project</a><a href="#mkt">Marketing</a><a href="#cert">Sertifikasi</a
+        ><a href="#kontak">Kontak</a>
       </div>
     </nav>
 
@@ -1186,7 +1207,7 @@
     <div class="wrap">
       <div class="stats rv">
         <div><b>3,42</b><small>IPK D4 Informatika</small></div>
-        <div><b>2025</b><small>Lulus Polnep</small></div>
+        <div><b>2025</b><small>Lulus PNL</small></div>
         <div><b>5</b><small>Project</small></div>
         <div><b>3</b><small>Sertifikasi &amp; pelatihan</small></div>
       </div>
@@ -1245,7 +1266,10 @@
         </div>
         <div class="tl" id="tl">
           <div class="it rv">
-            <div class="m">Magang IT / Web Development</div>
+            <div class="it-meta">
+              <div class="m">Magang IT / Web Development</div>
+              <div class="m date">03 Maret – 17 Agustus 2024</div>
+            </div>
             <h3>PT Pertamina Patra Niaga Lhokseumawe</h3>
             <p class="o">HSSE, Receiving &amp; Storage, MPS</p>
             <ul>
@@ -1280,9 +1304,9 @@
           <p>Satu ekosistem: admin, website publik, dan game kuis.</p>
         </div>
         <div class="flow rv">
-          <div class="n"><b>Back-end admin · Laravel</b><small>Fullstack admin untuk mengelola data, sekaligus REST API yang mengirim data secara real-time ke front-end.</small></div>
-          <div class="ar"><i>→</i>REST API<br />real-time</div>
-          <div class="n"><b>Front-end · Next.js</b><small>Membangun antarmuka yang menarik dan menerima data real-time dari admin back-end.</small></div>
+          <div class="n"><b>Back-end admin · Laravel</b><small>Mengembangkan sistem admin untuk mengelola data konten dan menyediakan REST API sebagai sumber data website publik.</small></div>
+          <div class="ar"><i>→</i>REST API<br />Fetch</div>
+          <div class="n"><b>Frontend Development — Next.js</b><small>Mengembangkan frontend website publik Cinta Bangga Paham Rupiah menggunakan Next.js yang terintegrasi dengan backend admin Laravel melalui REST API. Frontend dirancang untuk menerima dan menampilkan data konten edukasi, berita, dan informasi lomba yang dikelola melalui sistem admin. Penggunaan Next.js mendukung pengembangan antarmuka berbasis komponen yang modular, struktur halaman yang terorganisir, serta optimasi performa dan SEO untuk meningkatkan pengalaman pengguna. Pengambilan data dari REST API dilakukan menggunakan Fetch API.</small></div>
         </div>
         <div class="pg">
           <article class="pc rv">
@@ -1296,7 +1320,7 @@
             <div class="pb">
               <div class="role">Fullstack admin &amp; REST API</div>
               <h4>Admin CBP</h4>
-              <p>Sistem admin untuk mengelola konten lomba, edukasi, dan berita, serta menyediakan REST API yang mengirim data real-time ke website front-end.</p>
+              <p>Sistem admin untuk mengelola konten lomba, edukasi, dan berita, serta menyediakan REST API yang dikonsumsi website publik menggunakan Fetch API.</p>
               <div class="tg"><span>Laravel</span><span>REST API</span><span>MySQL</span></div>
               <div class="pl"><a href="https://admin-cbp.cbprupiahlsm.id/" target="_blank" rel="noopener">Live Demo</a><a href="https://github.com/Rizkiwahyua/admin--cbp" target="_blank" rel="noopener">Source Code</a></div>
             </div>
